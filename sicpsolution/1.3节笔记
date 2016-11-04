@@ -1,0 +1,6 @@
+(define (fib n)
+  (define (fib-iter a b count)
+    (if (= count 0)
+	    b
+		(fin-iter (+ a b) a (- 1 count))))
+  (fib 1 0 n))  //注意参数的传递

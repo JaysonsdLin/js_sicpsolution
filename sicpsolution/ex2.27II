@@ -1,0 +1,11 @@
+(define (deep-reverse x)
+ (define nil '())
+ (define (iter x result)
+   (if (null? x)
+       result
+	   (iter (cdr x) (cons (if (not (pair? (car x))
+	                           (car x)
+                               (deep-reverse (car x))  //(iter (car x) result) result未刷新，将返回更多元素的新表。
+                           result))))))
+ (iter x nil))						   
+	

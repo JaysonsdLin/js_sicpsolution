@@ -1,0 +1,13 @@
+(define (last-pair list1)
+   (cond (null? list1)
+         list1
+		 (last-pair (cdr list1)))) //最后只能输出空list,设置一个变量存储空list之前的表。
+		 
+(define (last-pair list2)
+  (let ((temp (cdr list2)))
+    (if (null? temp)
+	    list2
+		(last-pair temp))))
+  
+         
+ 

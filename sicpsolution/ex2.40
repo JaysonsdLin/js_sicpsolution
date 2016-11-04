@@ -1,0 +1,18 @@
+(define (filter predicate seq)
+  (cond ((null? seq) nil)
+        ((predicate (car seq))
+		 (cons (car seq)
+		       (filter predicate (cdr seq))))
+	    (else (filter predicate (cdr seq)))))
+(define (flatmap proc seq)
+  (accumulate append nil (map proc seq)))
+(define (unique-pair n)
+  (flatmap (lambda (x)
+             (map (lambda (j) (list x j)
+			      (enumerate-interval 1 (- x 1))))
+		   (enumerate-interval 1 n))))
+(define (prime-sum-pair n)
+  (map make-pair-sum
+       (filter prime-sum?
+	           (unique n))))
+			   

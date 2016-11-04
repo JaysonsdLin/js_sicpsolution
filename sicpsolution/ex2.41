@@ -1,0 +1,26 @@
+(accumulate append
+            nil
+		   (map (lambda (i)
+		          (map (lambda (j)
+				         (map (lambda (k) (list i j k))
+						      (enumerate-interval 1 (- j 1))))
+					   (enumerate-interval 1 (- i 1))))
+				(enumerate-interval 3 n)))
+(define (tri-less-s s n)
+  (define (tri-seq n)     ,枚举器
+    (accumulate append
+	            nil
+				(map (lambda (i)
+				       (map (lambda (j)
+					          (map (lambda (k) (list i j k))
+							       (enumerate-interval 1 (- j 1))))
+							(enumerate-interval 1 (- i 1))))
+                     (enumerate-interval 3 n))))
+ 
+  (define (tri-equal-s? triples s)  ,过滤器谓词
+    (= s (accumulate + 0 triples)))
+  (define (filter predict sequence) ,过滤器
+    (cond ((null? sequence) nil)
+	      ((predict (car sequence)) (cons (car sequence) (filter predict sequence)))
+		  (else (filter (filter predict sequence)))))
+  (filter tri-equal-s? (tri-seq n)))

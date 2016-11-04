@@ -1,0 +1,1 @@
+cons 的数据结构是先入后出。应该改为list或者append

@@ -1,0 +1,10 @@
+
+		 
+(define (reverse list2)
+  (define (iter list2 result)
+    (if (null? list2)
+         result
+        (iter (cdr list2) (cons (car list2) result))))
+    (iter list2 nil))		
+         
+ 

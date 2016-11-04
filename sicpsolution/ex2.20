@@ -1,0 +1,10 @@
+2.20 用递归，还未解决，如何判定奇偶性
+(define (same-parity a1 . a2)
+  (cond ((null? a2) nil)
+        ((even? a1) (if (even? (car a2))
+		                (cons (car a2) (same-parity a1 . (cdr a2)))
+						(same-parity a1 . (cdr a2))))
+		((odd? a1) (if (odd? (car a2))
+		                (cons (car a2) (same-parity a1 . (cdr a2)))
+						(same-parity a1 .(cdr a2)))
+		(else 'error')))

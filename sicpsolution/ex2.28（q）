@@ -1,0 +1,25 @@
+(define (fringe x)
+  (define (iter x result)
+    (if (null? x)
+	     result
+		(let ((first (car x)))
+		  (iter (cdr x)
+		        (if(not (pair? first))
+				        (cons first result)
+						(iter first 				
+       
+(define (fringe x)
+  (define nil '())
+  (cond ((null? x) nil)
+        ((not (pair? tree)) (list tree))
+		(else (append (fringe (car tree)) (fringe (cdr tree))))))
+(define (fringe x)
+  (define nil '())
+  (define (iter x result)  //迭代器
+    (if (null? x)
+	    result 
+		(let ((temp (car x)))
+		  (iter (cdr x) (if (not (pair? temp) //
+		                         (cons temp result) //temp 不是序对将temp 与result组合
+								 (iter temp result))))))) //temp 是序对，将temp 进行迭代直到返回表。
+  (iter x nil))							 

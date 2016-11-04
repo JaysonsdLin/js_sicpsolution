@@ -1,0 +1,18 @@
+(define (deep-reverse x)
+  (define nil '())
+  (define (reverse x)
+    (define (iter x result)
+	  (if (null? x)
+	      result
+		  (let ((temp (car x)))
+		    (iter (cdr x) (cons temp result)))))
+	(iter x nil))
+  (define (de-re-iter x result)
+    (if (null? x)
+	    result
+		(d-re-iter (cdr x) (cons (if (not (pair? (car x)))
+		                             x
+									 (reverse (car x)))
+								 (result)))))
+  (d-re-iter x nil))
+	

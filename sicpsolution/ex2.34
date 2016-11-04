@@ -1,0 +1,13 @@
+(define (count-leaves1 t)
+  (accumulate + 0 (map ((lambda (x) 
+                          (if (pair? x)
+						      (count-leaves1 x)
+							  1))
+						t))))
+  
+  
+(define (count-leaves2 x)
+  (cond ((null? x) 0)
+        ((not (pair? x)) 1)
+        (else (+ (count-leaves2 (car x))
+                 (count-leaves2 (cdr x))))))		

@@ -1,0 +1,6 @@
+(define (equal? s1 mod)
+  (cond ((null? s1) true) ;s1短于 mod 会出bug
+        ((not (eq? (car mod) (car s1))) false)
+        (else (equal? (cdr s1) (cdr mod)))))
+(define (equal2? list1 list2)
+  (accumulaite (lambda (x y) (and x y)) #t (map eq? list1 lis ))) ;excellent!!!		

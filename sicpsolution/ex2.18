@@ -1,0 +1,10 @@
+
+		 
+(define (last-pair list2)
+  (let ((temp (cdr list2)))
+    (if (null? temp)
+	    list2
+		(append (reverse (cdr items))
+		        (list (car list2))))))
+         
+ 

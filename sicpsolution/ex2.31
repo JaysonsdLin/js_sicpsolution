@@ -1,0 +1,8 @@
+(define (tree-map func x)
+  (map (lambda (temp)          //scheme中对函数进行抽象的技术。
+               (if (pair? temp)
+			       (tree-map func temp)  //map 遍历完每一片叶直到执行(func temp) 把每表中一个元素一个元素放入到func中执行运算。
+				   (func temp)))
+	    x))
+				   
+                 			   

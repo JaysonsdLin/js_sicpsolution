@@ -1,0 +1,26 @@
+(define (enumerate-interval low high)
+  (if (> low high)
+      nil
+	  (cons low
+	        (enumerate-interval (+ low 1) high))))
+
+(define (permutations s)
+  (if (null? s)
+      (list nil)
+	  (flatmap (lambda (x)
+	             (map (lambda (p) (cons x p))
+				      (permutations (remove x s))))
+			    s)))
+(define (remove item sequence)
+  (filter (lambda (x) (not (= x item)))
+          sequence))
+(define (filter predicate sequence)
+  (cond ((null? sequence) nil)
+        ((predicate (car sequence))
+		 (cons (car sequence)
+		       (filter predicate (cdr sequence))))
+		(else (filter predicate (cdr sequence)))))
+				
+(define (flatmap proc s)
+  (accumulate append nil (map proc sequence)))
+  
